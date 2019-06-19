@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Panda.Data\Panda.Data.csproj" />
+    <ProjectReference Include="..\Panda.InputModels\Panda.InputModels.csproj" />
+    <ProjectReference Include="..\Panda.Models\Panda.Models.csproj" />
+    <ProjectReference Include="..\Panda.ViewModels\Panda.ViewModels.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,9 @@
+﻿@model IEnumerable<PackageInfoViewModel>
+
+@{
+    ViewData["Title"] = "Shipped";
+    ViewData["type"] = "shipped";
+    ViewData["Action"] = "Deliver";
+}
+
+<partial name="_AllPackagesPartial" model="Model" view-data="ViewData" />

@@ -1,0 +1,34 @@
+﻿@page
+@model RegisterModel
+@{
+	ViewData["Title"] = "Register";
+}
+
+<h1 class="text-center text-torshia">Register</h1>
+<hr class="bg-panda w-50 hr-2" />
+<form asp-route-returnUrl="@Model.ReturnUrl" class="mx-auto w-50" method="post">
+	<div asp-validation-summary="All" class="text-danger"></div>
+	<div class="form-group">
+		<label asp-for="Input.Username" class="text-torshia"></label>
+		<input asp-for="Input.Username" class="form-control" placeholder="Username...">
+	</div>
+	<div class="form-group">
+		<label asp-for="Input.Password" class="text-torshia"></label>
+		<input asp-for="Input.Password" class="form-control" placeholder="Password...">
+	</div>
+	<div class="form-group">
+		<label asp-for="Input.ConfirmPassword" class="text-torshia"></label>
+		<input asp-for="Input.ConfirmPassword" class="form-control" placeholder="Confirm Password...">
+	</div>
+	<div class="form-group">
+		<label asp-for="Input.Email" class="text-torshia"></label>
+		<input asp-for="Input.Email" class="form-control" placeholder="Email...">
+	</div>
+	<div class="button-holder mt-4 d-flex justify-content-center">
+		<button type="submit" class="btn bg-panda text-white">Register</button>
+	</div>
+</form>
+
+@section Scripts {
+	<partial name="_ValidationScriptsPartial" />
+}

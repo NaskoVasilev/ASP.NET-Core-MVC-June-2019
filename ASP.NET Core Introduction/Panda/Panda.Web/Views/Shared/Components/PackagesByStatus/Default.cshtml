@@ -1,0 +1,26 @@
+﻿@model IEnumerable<PackageIndexViewModel>
+
+@{
+	ViewData["Title"] = "User Packages";
+	string status = ViewData["status"].ToString();
+}
+
+<div class="w-25 bg-white">
+	<h2 class="text-center">@status</h2>
+	<div class="border-panda p-2">
+		@foreach (var package in Model)
+		{
+			<div class="p-1 d-flex justify-content-around">
+				<h4 class="w-75">@package.Name</h4>
+				@if (status.ToLower() == "delivered")
+				{
+					<a class="btn bg-panda text-white w-25" asp-controller="Package" asp-action="Acquire" asp-route-id="@package.Id">Acquire</a>
+				}
+				else
+				{
+					<a class="btn bg-panda text-white w-25" asp-action="Details" asp-controller="Package" asp-route-id="@package.Id">Details</a>
+				}
+			</div>
+		}
+	</div>
+</div>

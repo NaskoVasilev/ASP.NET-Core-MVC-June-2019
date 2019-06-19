@@ -1,0 +1,16 @@
+﻿@model FDMC.ViewModels.CatViewModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div>
+    <h2>@Model.Name</h2>
+    <img src=@Model.ImageUrl class="responsive-img" alt="Cat image comes here" />
+    <h4>Age: @Model.Age</h4>
+    <h4>Breed: @Model.Breed</h4>
+</div>
+<div>
+	<a asp-action="Create" asp-controller="Cat">Add Cat</a>
+    <a asp-controller="Home" asp-action="Index">Back to List</a>
+</div>

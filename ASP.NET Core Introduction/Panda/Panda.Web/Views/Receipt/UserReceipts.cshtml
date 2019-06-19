@@ -1,0 +1,37 @@
+﻿@using System.Globalization
+@model IEnumerable<ReceiptViewModel>
+
+@{
+	ViewData["Title"] = "UserReceipts";
+}
+
+<h1 class="text-center">My Receipts</h1>
+<hr class="hr-2 bg-panda">
+<div class="d-flex justify-content-between">
+	<table class="table table-hover table-bordered">
+		<thead>
+			<tr class="row">
+				<th scope="col" class="col-lg-5 d-flex justify-content-center"><h3>Id</h3></th>
+				<th scope="col" class="col-lg-2 d-flex justify-content-center"><h3>Fee</h3></th>
+				<th scope="col" class="col-lg-2 d-flex justify-content-center"><h3>Issued On</h3></th>
+				<th scope="col" class="col-lg-2 d-flex justify-content-center"><h3>Recipient</h3></th>
+				<th scope="col" class="col-lg-1 d-flex justify-content-center"><h3>Actions</h3></th>
+			</tr>
+		</thead>
+		<tbody>
+
+			@foreach (var item in Model)
+			{
+				<tr class="row">
+					<th scope="row" class="col-lg-5 d-flex justify-content-center"><h5>@item.Id</h5></th>
+					<td class="col-lg-2 d-flex justify-content-center"><h5>$@item.Fee</h5></td>
+					<td class="col-lg-2 d-flex justify-content-center"><h5>@item.IssuedOn.ToString("dd/MM/yyyy", CultureInfo.InvariantCulture)</h5></td>
+					<td class="col-lg-2 d-flex justify-content-center"><h5>@item.Recipient</h5></td>
+					<td class="col-lg-1 d-flex justify-content-center">
+						<a asp-action="Details" class="btn bg-panda text-white" asp-route-id="@item.Id">Details</a>
+					</td>
+				</tr>
+			}
+		</tbody>
+	</table>
+</div>

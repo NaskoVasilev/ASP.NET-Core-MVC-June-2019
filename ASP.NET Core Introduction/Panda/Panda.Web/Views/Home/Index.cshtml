@@ -1,0 +1,30 @@
+﻿@{
+	ViewData["Title"] = "Home Page";
+}
+
+@if (User.Identity.IsAuthenticated)
+{
+	@if (User.IsInRole("Admin"))
+	{
+		<h1 class="text-center">Hello Administrator, @User.Identity.Name</h1>
+	}
+	else
+	{
+		<h1 class="text-center">Hello, @User.Identity.Name</h1>
+	}
+	<hr class="hr-2 bg-panda">
+	<div class="d-flex justify-content-between">
+		<vc:packages-by-status status="Pending"></vc:packages-by-status>
+		<vc:packages-by-status status="Shipped"></vc:packages-by-status>
+		<vc:packages-by-status status="Delivered"></vc:packages-by-status>
+	</div>
+}
+else
+{
+	<div class="jumbotron mt-3 bg-panda">
+		<h1 class="text-white">Welcome to PANDA Delivery Services.</h1>
+		<hr class="bg-white hr-2" />
+		<h3 class="text-white"><a asp-area="Identity" asp-page="/Account/Login">Login</a> if you have an account.</h3>
+		<h3 class="text-white"><a asp-area="Identity" asp-page="/Account/Register">Register</a> if you don't.</h3>
+	</div>
+}

@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29009.5
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Panda.Web", "Panda.Web\Panda.Web.csproj", "{3E0A570C-CE55-4233-A4AB-680C0A40950C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Panda.Services", "Panda.Services\Panda.Services.csproj", "{9B9CA477-B6D7-4E21-9B22-DECBD71AD767}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Panda.Data", "Panda.Data\Panda.Data.csproj", "{E5178736-35F7-4A34-9CE5-76E758465562}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Panda.Models", "Panda.Models\Panda.Models.csproj", "{AC81465A-1A33-42B7-B78E-0AD2C23049FD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Panda.ViewModels", "Panda.ViewModels\Panda.ViewModels.csproj", "{3384D236-58F4-4181-B066-D3DD2B07F995}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Panda.InputModels", "Panda.InputModels\Panda.InputModels.csproj", "{4C1402A8-3196-4B0F-9BB0-068DD10A1DC0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3E0A570C-CE55-4233-A4AB-680C0A40950C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3E0A570C-CE55-4233-A4AB-680C0A40950C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3E0A570C-CE55-4233-A4AB-680C0A40950C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3E0A570C-CE55-4233-A4AB-680C0A40950C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9B9CA477-B6D7-4E21-9B22-DECBD71AD767}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9B9CA477-B6D7-4E21-9B22-DECBD71AD767}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9B9CA477-B6D7-4E21-9B22-DECBD71AD767}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9B9CA477-B6D7-4E21-9B22-DECBD71AD767}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E5178736-35F7-4A34-9CE5-76E758465562}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E5178736-35F7-4A34-9CE5-76E758465562}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E5178736-35F7-4A34-9CE5-76E758465562}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E5178736-35F7-4A34-9CE5-76E758465562}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC81465A-1A33-42B7-B78E-0AD2C23049FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC81465A-1A33-42B7-B78E-0AD2C23049FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC81465A-1A33-42B7-B78E-0AD2C23049FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC81465A-1A33-42B7-B78E-0AD2C23049FD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3384D236-58F4-4181-B066-D3DD2B07F995}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3384D236-58F4-4181-B066-D3DD2B07F995}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3384D236-58F4-4181-B066-D3DD2B07F995}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3384D236-58F4-4181-B066-D3DD2B07F995}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4C1402A8-3196-4B0F-9BB0-068DD10A1DC0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4C1402A8-3196-4B0F-9BB0-068DD10A1DC0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4C1402A8-3196-4B0F-9BB0-068DD10A1DC0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4C1402A8-3196-4B0F-9BB0-068DD10A1DC0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {74200A56-7C87-4769-BB90-9376818EB53E}
+	EndGlobalSection
+EndGlobal

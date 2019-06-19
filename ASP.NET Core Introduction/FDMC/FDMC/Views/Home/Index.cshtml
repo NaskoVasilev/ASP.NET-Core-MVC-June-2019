@@ -1,0 +1,16 @@
+﻿@model FDMC.ViewModels.CatCommonViewModel[]
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div id="home">
+    <h1>Fluffy Duffy Munchkin Cats</h1>
+
+    @foreach (var cat in Model)
+    {
+        <a asp-controller="Cat" asp-action="Details" asp-route-id=@cat.Id>@cat.Name</a>
+    }
+
+    <a asp-controller="Cat" asp-action="Create">Add Cat</a>
+</div>

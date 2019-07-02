@@ -9,6 +9,7 @@ using Eventures.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Eventures.Models;
+using Eventures.Extensions;
 
 namespace Eventures
 {
@@ -32,10 +33,18 @@ namespace Eventures
 			services.AddDbContext<ApplicationDbContext>(options =>
 				options.UseSqlServer(
 					Configuration.GetConnectionString("DefaultConnection")));
-			services.AddDefaultIdentity<ApplicationUser>()
-				.AddDefaultUI(UIFramework.Bootstrap4)
-				.AddDefaultTokenProviders()
-				.AddEntityFrameworkStores<ApplicationDbContext>();
+			services.AddIdentity<ApplicationUser, IdentityRole>(options =>
+			{
+				options.Password.RequireDigit = false;
+				options.Password.RequiredLength = 3;
+				options.Password.RequiredUniqueChars = 0;
+				options.Password.RequireLowercase = false;
+				options.Password.RequireNonAlphanumeric = false;
+				options.Password.RequireUppercase = false;
+			})
+			.AddDefaultTokenProviders()
+			.AddEntityFrameworkStores<ApplicationDbContext>()
+			.AddDefaultUI(UIFramework.Bootstrap4);
 
 			services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 		}
@@ -53,6 +62,8 @@ namespace Eventures
 				app.UseExceptionHandler("/Home/Error");
 				app.UseHsts();
 			}
+
+			app.UseDatabaseSeeding();
 
 			app.UseHttpsRedirection();
 			app.UseStaticFiles();

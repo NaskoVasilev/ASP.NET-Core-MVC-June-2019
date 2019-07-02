@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <UserSecretsId>aspnet-Eventures-1CD21EE0-227E-4FFD-A27D-0ACAD14D6A84</UserSecretsId>
+    <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
+  </PropertyGroup>
+
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.3" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <ProjectReference Include="..\Eventures.InputModels\Eventures.InputModels.csproj" />
+    <ProjectReference Include="..\Eventures.Models\Eventures.Models.csproj" />
+    <ProjectReference Include="..\Eventures.Services\Eventures.Services.csproj" />
+    <ProjectReference Include="..\Eventures.ViewModels\Eventures.ViewModels.csproj" />
+  </ItemGroup>
+
+</Project>

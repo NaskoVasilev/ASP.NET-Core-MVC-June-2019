@@ -1,0 +1,56 @@
+﻿@page
+@model LoginModel
+
+@{
+	ViewData["Title"] = "Log in";
+}
+
+<h1 class="text-center">Login</h1>
+<hr class="bg-eventures w-50 hr-2" />
+<form asp-route-returnUrl="@Model.ReturnUrl" class="mx-auto half-width" method="post">
+	<div asp-validation-summary="All" class="text-danger"></div>
+	<div class="form-group">
+		<div class="d-flex justify-content-center">
+			<label class="font-weight-bold" asp-for="Input.Username"></label>
+		</div>
+		<input asp-for="Input.Username" class="form-control" placeholder="Username...">
+		<span asp-validation-for="Input.Username" class="text-danger"></span>
+	</div>
+	<div class="form-group">
+		<div class="d-flex justify-content-center">
+			<label class="font-weight-bold" asp-for="Input.Password"></label>
+		</div>
+		<input asp-for="Input.Password" class="form-control" placeholder="Password...">
+		<span asp-validation-for="Input.Password" class="text-danger"></span>
+	</div>
+	<div class="button-holder d-flex justify-content-center">
+		<button type="submit" class="btn bg-eventures">Login</button>
+	</div>
+</form>
+<div>
+	<div class="text-center my-2">
+		<a asp-controller="Account" asp-action="ForgotPassword" class="text-info">Forgot your password?</a>
+	</div>
+	<div class="text-center mb-2">
+		<a asp-area="Identity" asp-page="/Account/Register" class="text-info">Register as a new user</a>
+	</div>
+</div>
+
+@*<hr class="chushka-bg-color w-50 hr-2" />*@
+
+@*<form asp-area="Identity" asp-page="/Account/ExternalLogin" asp-route-returnUrl="@ViewData["returnUrl"]" method="post" class="mx-auto w-50 text-center font-weight-bold">
+	<div>
+		<p>
+			@foreach (var provider in Model.ExternalLogins)
+			{
+				<button type="submit" class="btn chushka-bg-color" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">@provider.DisplayName</button>
+			}
+		</p>
+	</div>
+</form>*@
+
+@*<hr class="chushka-bg-color w-50 hr-2" />*@
+
+@section Scripts {
+	<partial name="_ValidationScriptsPartial" />
+}

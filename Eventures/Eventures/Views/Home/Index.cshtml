@@ -1,0 +1,32 @@
+﻿@{
+	ViewData["Title"] = "Home Page";
+}
+
+<div class="d-flex justify-content-center">
+	@if (User == null || !User.Identity.IsAuthenticated)
+	{
+		<div class="jumbotron bg-eventures w-85 mb-2">
+			<h2>Eventures - The best ticket service in the world.</h2>
+			<hr class="bg-dark hr-2" />
+			<h3><a class="nav-link-dark" href="/Account/Login">Login</a> to start "eventing". </h3>
+			<h3><a class="nav-link-dark" href="/Account/Register">Register</a> if you don't have an account.</h3>
+		</div>
+	}
+	else
+	{
+		<div class="jumbotron mt-3 text-center chushka-bg-color w-85">
+			@if (this.User.IsInRole("User"))
+			{
+				<h2>Welcome,  @User.Identity.Name !</h2>
+				<hr class="bg-gray w-85 hr-2" />
+				<h4 class="bg-gray">Eventures wishes you an exiting experience.</h4>
+			}
+			else if (this.User.IsInRole("Administrator"))
+			{
+				<h2>Greetings, administrator - @User.Identity.Name !</h2>
+				<hr class="bg-gray w-85 hr-2" />
+				<h4 class="text-gray">Enjoy your work.</h4>
+			}
+		</div>
+	}
+</div>

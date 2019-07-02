@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Eventures.Data\Eventures.Data.csproj" />
+    <ProjectReference Include="..\Eventures.InputModels\Eventures.InputModels.csproj" />
+    <ProjectReference Include="..\Eventures.ViewModels\Eventures.ViewModels.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,63 @@
+<div class="collapse navbar-collapse d-flex justify-content-between" id="navbarSupportedContent">
+	<ul class="navbar-nav mr-auto">
+		<li class="nav-item active">
+			<a asp-area="" asp-controller="Home" asp-action="Index" class="nav-link text-dark font-weight-bold">Home</a>
+		</li>
+		@if (this.User.Identity.IsAuthenticated)
+		{
+			<li class="nav-item dropdown">
+				<a class="nav-link text-dark font-weight-bold dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					Events
+				</a>
+				<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+					<a class="dropdown-item" asp-area="" asp-controller="Event" asp-action="All">All Events</a>
+					@*<a class="dropdown-item" asp-area="" asp-controller="Event" asp-action="MyEvents">My Events</a>*@
+					@if (this.User.IsInRole("Administrator"))
+					{
+						<a class="dropdown-item" asp-area="" asp-controller="Event" asp-action="Create">Create Event</a>
+					}
+				</div>
+			</li>
+			if (this.User.IsInRole("Administrator"))
+			{
+				@*<li class="nav-item dropdown">
+					<a class="nav-link text-dark font-weight-bold dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						Orders
+					</a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdown2">
+						<a class="dropdown-item" asp-area="" asp-controller="Order" asp-action="All">All Orders</a>
+					</div>
+				</li>*@
+			}
+		}
+	</ul>
+	@if (!this.User.Identity.IsAuthenticated)
+	{
+		<ul class="navbar-nav">
+			<li class="nav-item">
+				<a class="nav-link text-dark font-weight-bold " asp-controller="Account" asp-action="Login">Login</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link text-dark font-weight-bold " asp-controller="Account" asp-action="Register">Register</a>
+			</li>
+		</ul>
+	}
+	@if (this.User.Identity.IsAuthenticated)
+	{
+		<ul class="navbar-nav ">
+			<li class="nav-item">
+				<a class="nav-link text-dark font-weight-bold" asp-area="" asp-controller="Home" asp-action="Index">Hello @User.Identity.Name!</a>
+			</li>
+			@*@if (this.User.IsInRole("Administrator"))
+			{
+				<li class="nav-item">
+					<a class="nav-link text-dark" asp-area="Administration" asp-controller="Administrator" asp-action="AdminPanel">Admin Panel</a>
+				</li>
+			}*@
+			<li class="nav-item">
+				<a class="nav-link text-dark font-weight-bold" asp-area="" asp-controller="Account" asp-action="Logout">Logout</a>
+			</li>
+		</ul>
+	}
+</div>
+

@@ -10,17 +10,21 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Eventures.Models;
 using Eventures.Extensions;
+using AutoMapper.Configuration;
+using AutoMapper;
+using Eventures.Services.Mappings;
+using Eventures.Services;
 
 namespace Eventures
 {
 	public class Startup
 	{
-		public Startup(IConfiguration configuration)
+		public Startup(Microsoft.Extensions.Configuration.IConfiguration configuration)
 		{
 			Configuration = configuration;
 		}
 
-		public IConfiguration Configuration { get; }
+		public Microsoft.Extensions.Configuration.IConfiguration Configuration { get; }
 
 		public void ConfigureServices(IServiceCollection services)
 		{
@@ -45,6 +49,12 @@ namespace Eventures
 			.AddDefaultTokenProviders()
 			.AddEntityFrameworkStores<ApplicationDbContext>()
 			.AddDefaultUI(UIFramework.Bootstrap4);
+
+			var mapperConfiguration = new MapperConfigurationExpression();
+			mapperConfiguration.AddProfile<EventuresProfile>();
+			Mapper.Initialize(mapperConfiguration);
+
+			services.AddTransient<IEventService, EventService>();
 
 			services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 		}

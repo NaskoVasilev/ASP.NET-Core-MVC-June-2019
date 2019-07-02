@@ -9,14 +9,14 @@
 <form asp-route-returnUrl="@Model.ReturnUrl" class="w-50 mx-auto" method="post">
 	<div asp-validation-summary="All" class="text-danger"></div>
 	<div class="d-flex justify-content-between">
-		<div class="form-group">
+		<div class="w-95 form-group">
 			<div class="d-flex justify-content-center">
 				<label class="font-weight-bold" asp-for="Input.Username"></label>
 			</div>
 			<input asp-for="Input.Username" class="form-control" placeholder="Username...">
 			<span asp-validation-for="Input.Username" class="text-danger"></span>
 		</div>
-		<div class="form-group">
+		<div class="w-95 form-group">
 			<div class="d-flex justify-content-center">
 				<label class="font-weight-bold" asp-for="Input.Email"></label>
 			</div>
@@ -26,14 +26,14 @@
 	</div>
 
 	<div class="d-flex justify-content-between">
-		<div class="form-group">
+		<div class="form-group w-95">
 			<div class="d-flex justify-content-center">
 				<label class="font-weight-bold" asp-for="Input.Password"></label>
 			</div>
 			<input asp-for="Input.Password" class="form-control" placeholder="Password...">
 			<span asp-validation-for="Input.Password" class="text-danger"></span>
 		</div>
-		<div class="form-group">
+		<div class="form-group w-95">
 			<div class="d-flex justify-content-center">
 				<label class="font-weight-bold" asp-for="Input.ConfirmPassword"></label>
 			</div>
@@ -45,14 +45,14 @@
 	<hr class="bg-eventures hr-2" />
 
 	<div class="d-flex justify-content-between">
-		<div class="form-group">
+		<div class="form-group w-95">
 			<div class="d-flex justify-content-center">
 				<label class="font-weight-bold" asp-for="Input.FirstName"></label>
 			</div>
 			<input asp-for="Input.FirstName" class="form-control" placeholder="First Name...">
 			<span asp-validation-for="Input.FirstName" class="text-danger"></span>
 		</div>
-		<div class="form-group">
+		<div class="form-group w-95">
 			<div class="d-flex justify-content-center">
 				<label class="font-weight-bold" asp-for="Input.LastName"></label>
 			</div>

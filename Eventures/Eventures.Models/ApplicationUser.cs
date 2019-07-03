@@ -6,15 +6,15 @@ namespace Eventures.Models
 	public class ApplicationUser : IdentityUser<string>
 	{
 		[Required]
-		[StringLength(30, MinimumLength = 3)]
+		[MaxLength(30)]
 		public string FirstName { get; set; }
 
 		[Required]
-		[StringLength(30, MinimumLength = 3)]
+		[MaxLength(30)]
 		public string LastName { get; set; }
 
 		[Required]
-		[StringLength(10, MinimumLength = 2)]
+		[MaxLength(10)]
 		public string UniqueCitizenNumber { get; set; }
 	}
 }

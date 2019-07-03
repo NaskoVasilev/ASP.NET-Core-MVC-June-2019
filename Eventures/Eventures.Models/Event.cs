@@ -8,11 +8,9 @@ namespace Eventures.Models
 		public string Id { get; set; } = Guid.NewGuid().ToString();
 
 		[Required]
-		[StringLength(50, MinimumLength = 3)]
 		public string Name { get; set; }
 
 		[Required]
-		[StringLength(100, MinimumLength = 3)]
 		public string Place { get; set; }
 
 		public DateTime Start { get; set; }

@@ -1,0 +1,13 @@
+﻿@model HomeInputModel
+
+	<form asp-area="" asp-controller="Home" asp-action="Create">
+		<div class="form-group">
+			<label asp-for="Name"></label>
+			<input asp-for="Name" class="form-control" />
+		</div>
+		<div class="form-group">
+			<label asp-for="Year"></label>
+			<input asp-for="Year" class="form-control" />
+		</div>
+		<input type="submit" class="btn btn-success" value="Add"/>
+	</form>

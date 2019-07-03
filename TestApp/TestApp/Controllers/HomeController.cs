@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.Extensions.Configuration;
 using TestApp.Models;
 
@@ -17,9 +19,26 @@ namespace TestApp.Controllers
 			this.configuration = configuration;
 		}
 
-		public IActionResult Index()
+		public IActionResult Index([BindRequired]string name)
 		{
 			return this.View();
+		}
+
+
+		public IActionResult Create()
+		{
+			return View();
+		}
+
+		[HttpPost]
+		public IActionResult Create(HomeInputModel model)
+		{
+			if(!ModelState.IsValid)
+			{
+				return View(model);
+			}
+
+			return Json(model);
 		}
 
 		public IActionResult Privacy()

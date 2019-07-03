@@ -15,6 +15,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.FileProviders;
 using System.IO;
+using TestApp.ModelBinders;
 
 namespace TestApp
 {
@@ -57,7 +58,11 @@ namespace TestApp
 
 
 			services.AddAuthentication();
-			services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+			services.AddMvc(options => 
+			{
+				//options.ModelBinderProviders.Insert(0, new DateToYearBindingProvider());
+			})
+				.SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

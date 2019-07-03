@@ -26,7 +26,7 @@ namespace Eventures.Controllers
 		[HttpPost]
 		public IActionResult Create(EventCreateInputModel model)
 		{
-			if (!ModelState.IsValid && model.Start < model.End)
+			if (!ModelState.IsValid)
 			{
 				return View(model);
 			}

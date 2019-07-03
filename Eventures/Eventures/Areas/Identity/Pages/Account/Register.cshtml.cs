@@ -78,7 +78,7 @@ namespace Eventures.Areas.Identity.Pages.Account
             {
                 var user = new ApplicationUser
 				{
-					UserName = Input.Email,
+					UserName = Input.Username,
 					Email = Input.Email,
 					FirstName = Input.FirstName,
 					LastName = Input.LastName,

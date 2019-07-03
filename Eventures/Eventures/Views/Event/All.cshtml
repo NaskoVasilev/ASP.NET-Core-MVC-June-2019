@@ -1,0 +1,43 @@
+﻿@using System.Globalization
+@model IEnumerable<EventViewModel>
+
+@{
+    ViewData["Title"] = "All";
+	string dateFormat = "dd-MMM-yy HH:mm:ss";
+}
+
+<h1 class="text-center">All Events</h1>
+<hr class="hr-2 bg-eventures" />
+<table class="table w-85 mx-auto table-hover">
+    <thead>
+		<tr class="row">
+			<th class="col-md-1">#</th>
+			<th class="col-md-3">Name</th>
+			<th class="col-md-2">Start</th>
+			<th class="col-md-2">End</th>
+			<th class="col-md-4">Place</th>
+		</tr>
+    </thead>
+    <tbody>
+		@{ int count = 1; }
+        @foreach (var item in Model)
+        {
+            <tr class="row">
+				<td class="col-md-1">@(count++)</td>
+                <td class="col-md-3">@item.Name</td>
+                <td class="col-md-2">@item.Start.ToString(dateFormat, CultureInfo.InvariantCulture)</td>
+                <td class="col-md-2">@item.End.ToString(dateFormat, CultureInfo.InvariantCulture)</td>
+                <td class="col-md-4">
+					@item.Place
+                    
+					@*<form asp-controller="Order" asp-action="Create" method="post">
+                        <input type="hidden" name="EventId" value="@item.Id" />
+                        <label class="font-weight-bold">Tickets</label>
+                        <input type="number" name="TicketsCount" value="" />
+                    </form>*@
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<hr  class="hr-2 bg-eventures"/>

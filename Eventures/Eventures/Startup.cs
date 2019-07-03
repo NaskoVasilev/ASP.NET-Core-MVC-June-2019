@@ -14,6 +14,7 @@ using AutoMapper.Configuration;
 using AutoMapper;
 using Eventures.Services.Mappings;
 using Eventures.Services;
+using Microsoft.Extensions.Logging;
 
 namespace Eventures
 {
@@ -53,6 +54,12 @@ namespace Eventures
 			var mapperConfiguration = new MapperConfigurationExpression();
 			mapperConfiguration.AddProfile<EventuresProfile>();
 			Mapper.Initialize(mapperConfiguration);
+
+			services.AddLogging(opt =>
+			{
+				opt.AddConsole();
+				opt.AddDebug();
+			});
 
 			services.AddTransient<IEventService, EventService>();
 

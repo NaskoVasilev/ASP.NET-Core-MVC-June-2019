@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using System.Collections.Generic;
+using AutoMapper.QueryableExtensions;
 using System.Linq;
 
 namespace Eventures.Services.Mappings.Extensions
@@ -13,7 +13,7 @@ namespace Eventures.Services.Mappings.Extensions
 
 		public static IQueryable<TDestination> To<TDestination>(this IQueryable<object> sources)
 		{
-			return sources.Select(s => s.To<TDestination>());
+			return sources.ProjectTo<TDestination>();
 		}
 	}
 }

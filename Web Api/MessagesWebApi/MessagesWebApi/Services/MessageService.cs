@@ -19,7 +19,9 @@ namespace MessagesWebApi.Services
 
 		public List<MessageViewModel> All()
 		{
-			return context.Messages.Select(m => new MessageViewModel() { Content = m.Content, User = m.User }).ToList();
+			return context.Messages
+				.OrderBy(m => m.CreatedOn)
+				.Select(m => new MessageViewModel() { Content = m.Content, User = m.User }).ToList();
 		}
 
 		public async Task<Message> Create(MessageCreateInputModel model)

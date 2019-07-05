@@ -1,10 +1,8 @@
-﻿using MessagesWebApi.Data.Models;
-using MessagesWebApi.Models.InputModels.Message;
+﻿using MessagesWebApi.Models.InputModels.Message;
 using MessagesWebApi.Models.ViewModels.Message;
 using MessagesWebApi.Services;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace MessagesWebApi.Controllers

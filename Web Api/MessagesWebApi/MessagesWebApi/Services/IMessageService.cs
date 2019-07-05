@@ -8,7 +8,7 @@ namespace MessagesWebApi.Services
 {
 	public interface IMessageService
 	{
-		IEnumerable<MessageViewModel> All();
+		List<MessageViewModel> All();
 
 		Task<Message> Create(MessageCreateInputModel model);
 	}

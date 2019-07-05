@@ -9,6 +9,6 @@ namespace MessagesWebApi.Models.InputModels.Message
 
 		[MaxLength(30)]
 		[Required]
-		public string Username { get; set; }
+		public string User { get; set; }
 	}
 }

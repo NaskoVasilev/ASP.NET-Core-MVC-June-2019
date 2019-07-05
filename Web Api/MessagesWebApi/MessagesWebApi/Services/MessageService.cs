@@ -17,14 +17,14 @@ namespace MessagesWebApi.Services
 			this.context = context;
 		}
 
-		public IEnumerable<MessageViewModel> All()
+		public List<MessageViewModel> All()
 		{
-			context.Messages.Select(m => new MessageViewModel() { Content = m.Content, User = m.User }).ToList();
+			return context.Messages.Select(m => new MessageViewModel() { Content = m.Content, User = m.User }).ToList();
 		}
 
 		public async Task<Message> Create(MessageCreateInputModel model)
 		{
-			Message message = new Message { User = model.Username, Content = model.Content };
+			Message message = new Message { User = model.User, Content = model.Content };
 			await context.Messages.AddAsync(message);
 			await context.SaveChangesAsync();
 			return message;

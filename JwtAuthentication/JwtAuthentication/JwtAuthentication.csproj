@@ -10,4 +10,11 @@
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\JwtAuthentication.InputModels\JwtAuthentication.InputModels.csproj" />
+    <ProjectReference Include="..\JwtAuthentication.Models\JwtAuthentication.Models.csproj" />
+    <ProjectReference Include="..\JwtAuthentication.Services\JwtAuthentication.Services.csproj" />
+    <ProjectReference Include="..\JwtAuthentication.ViewModels\JwtAuthentication.ViewModels.csproj" />
+  </ItemGroup>
+
 </Project>

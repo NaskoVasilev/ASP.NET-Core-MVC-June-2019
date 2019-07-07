@@ -4,4 +4,11 @@
     <TargetFramework>netcoreapp2.2</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\JwtAuthentication.Data\JwtAuthentication.Data.csproj" />
+    <ProjectReference Include="..\JwtAuthentication.InputModels\JwtAuthentication.InputModels.csproj" />
+    <ProjectReference Include="..\JwtAuthentication.Models\JwtAuthentication.Models.csproj" />
+    <ProjectReference Include="..\JwtAuthentication.ViewModels\JwtAuthentication.ViewModels.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -1,10 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Microsoft.AspNetCore.Identity;
+using System.ComponentModel.DataAnnotations;
 
 namespace JwtAuthentication.Models
 {
-	class ApplicationUser
+	public class ApplicationUser : IdentityUser
 	{
+		[Required]
+		public string FullName { get; set; }
 	}
 }

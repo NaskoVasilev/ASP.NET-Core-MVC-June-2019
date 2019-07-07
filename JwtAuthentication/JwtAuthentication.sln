@@ -5,6 +5,16 @@ VisualStudioVersion = 16.0.29009.5
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JwtAuthentication", "JwtAuthentication\JwtAuthentication.csproj", "{0B5407AD-8A34-4F2B-A5BE-40F036334115}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JwtAuthentication.Data", "JwtAuthentication.Data\JwtAuthentication.Data.csproj", "{1624C279-E63D-4212-8E6F-3447A552C843}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JwtAuthentication.Services", "JwtAuthentication.Services\JwtAuthentication.Services.csproj", "{99F17711-4516-423A-87A4-8EC4A092969F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JwtAuthentication.InputModels", "JwtAuthentication.InputModels\JwtAuthentication.InputModels.csproj", "{3AD85883-5FDE-45B9-A5C1-70B9716E02DB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JwtAuthentication.ViewModels", "JwtAuthentication.ViewModels\JwtAuthentication.ViewModels.csproj", "{3AF74BB7-0D55-42A5-8716-67F524937331}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JwtAuthentication.Models", "JwtAuthentication.Models\JwtAuthentication.Models.csproj", "{715F927A-941A-4460-BAB5-A3ADEE780AF2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +25,26 @@ Global
 		{0B5407AD-8A34-4F2B-A5BE-40F036334115}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0B5407AD-8A34-4F2B-A5BE-40F036334115}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0B5407AD-8A34-4F2B-A5BE-40F036334115}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1624C279-E63D-4212-8E6F-3447A552C843}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1624C279-E63D-4212-8E6F-3447A552C843}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1624C279-E63D-4212-8E6F-3447A552C843}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1624C279-E63D-4212-8E6F-3447A552C843}.Release|Any CPU.Build.0 = Release|Any CPU
+		{99F17711-4516-423A-87A4-8EC4A092969F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{99F17711-4516-423A-87A4-8EC4A092969F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{99F17711-4516-423A-87A4-8EC4A092969F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{99F17711-4516-423A-87A4-8EC4A092969F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3AD85883-5FDE-45B9-A5C1-70B9716E02DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3AD85883-5FDE-45B9-A5C1-70B9716E02DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3AD85883-5FDE-45B9-A5C1-70B9716E02DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3AD85883-5FDE-45B9-A5C1-70B9716E02DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3AF74BB7-0D55-42A5-8716-67F524937331}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3AF74BB7-0D55-42A5-8716-67F524937331}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3AF74BB7-0D55-42A5-8716-67F524937331}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3AF74BB7-0D55-42A5-8716-67F524937331}.Release|Any CPU.Build.0 = Release|Any CPU
+		{715F927A-941A-4460-BAB5-A3ADEE780AF2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{715F927A-941A-4460-BAB5-A3ADEE780AF2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{715F927A-941A-4460-BAB5-A3ADEE780AF2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{715F927A-941A-4460-BAB5-A3ADEE780AF2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

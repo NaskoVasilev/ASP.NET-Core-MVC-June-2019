@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Net;
+using System.Security.Claims;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
@@ -13,21 +17,55 @@ namespace TestApp.Controllers
 	public class HomeController : Controller
 	{
 		private readonly IConfiguration configuration;
+		private readonly UserManager<IdentityUser> userManager;
 
-		public HomeController(IConfiguration configuration)
+		public HomeController(IConfiguration configuration, UserManager<IdentityUser> userManager)
 		{
 			this.configuration = configuration;
+			this.userManager = userManager;
 		}
 
-		public IActionResult Index([BindRequired]string name)
+		public IActionResult Index(string name)
 		{
-			return this.View();
+			return View();
 		}
 
+		[Authorize]
+		public async Task<IActionResult> AddCountryClaim(string country)
+		{
+			Claim claim = new Claim(ClaimTypes.Country, country);
+			var currentUser = await userManager.GetUserAsync(this.User);
+			var result = await userManager.AddClaimAsync(currentUser, claim);
+			if (result.Succeeded)
+			{
+				return Ok("The clam was added");
+			}
+			else
+			{
+				string errorMessage = string.Join(", ", result.Errors.Select(e => e.Description));
+				return BadRequest(errorMessage);
+			}
+		}
+
+		[Authorize]
+		public async Task<IActionResult> GetClaims()
+		{
+			var currentUser = await userManager.GetUserAsync(this.User);
+			IList<Claim> claims = await userManager.GetClaimsAsync(currentUser);
+			string claimsAsText = string.Join(Environment.NewLine, claims.Select(c => $"{c.Type} -> {c.Value} -> {c.Subject}"));
+			return Ok(claimsAsText);
+		}
+
+		[Authorize(Policy = "CountryOrigin")]
+		public IActionResult GetUserCountry()
+		{
+			Claim claim = this.User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Country);
+			return Ok(claim.Value);	
+		}
 
 		public IActionResult Create()
 		{
-			return View();
+			return this.View();
 		}
 
 		[HttpPost]

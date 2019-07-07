@@ -16,6 +16,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.FileProviders;
 using System.IO;
 using TestApp.ModelBinders;
+using System.Security.Claims;
 
 namespace TestApp
 {
@@ -43,8 +44,10 @@ namespace TestApp
 				options.UseSqlServer(
 					Configuration.GetConnectionString("DefaultConnection")));
 			services.AddDefaultIdentity<IdentityUser>()
+				.AddRoles<IdentityRole>()
 				.AddDefaultUI(UIFramework.Bootstrap4)
-				.AddEntityFrameworkStores<ApplicationDbContext>();
+				.AddEntityFrameworkStores<ApplicationDbContext>()
+				.AddDefaultTokenProviders();
 
 			services.Configure<IdentityOptions>(options =>
 			{
@@ -58,11 +61,26 @@ namespace TestApp
 
 
 			services.AddAuthentication();
+			services.AddAuthorization(options =>
+			{
+				options.AddPolicy("CountryOrigin", policy =>
+				{
+					policy.RequireClaim(ClaimTypes.Country);
+					policy.RequireAuthenticatedUser();
+				});
+			});
 			services.AddMvc(options => 
 			{
 				//options.ModelBinderProviders.Insert(0, new DateToYearBindingProvider());
+				options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute());
 			})
-				.SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+			.SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
+			.AddRazorPagesOptions(options => 
+			{
+				options.Conventions.AuthorizeAreaPage("Identity", "/Account/Logout");
+			});
+
+			
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

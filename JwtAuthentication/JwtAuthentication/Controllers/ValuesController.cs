@@ -1,15 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace JwtAuthentication.Controllers
 {
-	
 	public class ValuesController : ApiController
 	{
 		// GET api/values
+		[Authorize]
 		[HttpGet]
 		public ActionResult<IEnumerable<string>> Get()
 		{

@@ -1,7 +1,10 @@
-﻿using JwtAuthentication.InputModels.Account;
+﻿using JwtAuthentication.Configuration;
+using JwtAuthentication.Extensions;
+using JwtAuthentication.InputModels.Account;
 using JwtAuthentication.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -23,10 +26,10 @@ namespace JwtAuthentication.Controllers
 			{
 				Email = model.Email,
 				UserName = model.Username,
-				FullName = model.FullName
+				FullName = model.FullName,
 			};
 
-			var result = await userManager.CreateAsync(user);
+			var result = await userManager.CreateAsync(user, model.Password);
 			if(!result.Succeeded)
 			{
 				return BadRequest(result.Errors.Select(e => e.Description).ToList());
@@ -35,9 +38,16 @@ namespace JwtAuthentication.Controllers
 		}
 
 		[HttpPost("[action]")]
-		public async Task<ActionResult<ApplicationUser>> Login(LoginInputModel model)
+		public async Task<ActionResult<ApplicationUser>> Login(LoginInputModel model, [FromServices]IOptions<JwtSettings> settings)
 		{
-			return null;
+			var jwtToken = await userManager.Authenticate(model.Username, model.Password, settings.Value);
+
+			if (jwtToken == null)
+			{
+				return BadRequest("Username or password is incorrect.");
+			}
+
+			return Ok(jwtToken);	
 		}
 	}
 }

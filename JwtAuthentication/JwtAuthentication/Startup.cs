@@ -26,7 +26,6 @@ namespace JwtAuthentication
 		// This method gets called by the runtime. Use this method to add services to the container.
 		public void ConfigureServices(IServiceCollection services)
 		{
-			services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 			services.AddDbContext<ApplicationDbContext>(options => options
 				.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
@@ -38,7 +37,7 @@ namespace JwtAuthentication
 			services.Configure<JwtSettings>(jwtSettingsSection);
 
 			var jwtSettings = jwtSettingsSection.Get<JwtSettings>();
-			var key = Encoding.UTF8.GetBytes(jwtSettings.Secret);
+			var key = Encoding.ASCII.GetBytes(jwtSettings.Secret);
 			services.AddAuthentication(options =>
 			{
 				options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -56,6 +55,8 @@ namespace JwtAuthentication
 					ValidateAudience = false
 				};
 			});
+
+			services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

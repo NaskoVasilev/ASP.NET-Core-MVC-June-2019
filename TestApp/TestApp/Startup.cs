@@ -74,13 +74,7 @@ namespace TestApp
 				//options.ModelBinderProviders.Insert(0, new DateToYearBindingProvider());
 				options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute());
 			})
-			.SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
-			.AddRazorPagesOptions(options => 
-			{
-				options.Conventions.AuthorizeAreaPage("Identity", "/Account/Logout");
-			});
-
-			
+			.SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

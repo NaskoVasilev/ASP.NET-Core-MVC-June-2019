@@ -15,9 +15,9 @@ namespace MessagesWebApi.Data.Models
 		[Required]
 		public string Content { get; set; }
 
-		[MaxLength(30)]
 		[Required]
-		public string User { get; set; }
+		public string UserId { get; set; }
+		public ApplicationUser User { get; set; }
 
 		public DateTime CreatedOn { get; set; }
 	}

@@ -23,7 +23,8 @@ function createMessage() {
     $.post({
         url: apiUrl + '/messages/create',
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + getToken()  
         },
         data: JSON.stringify({ content: content, user: user })
     })
@@ -42,4 +43,8 @@ function renderMessages(data) {
         let newMessage = $(`<div class="message d-flex justify-content-start"><strong>${message.user}</strong>: ${message.content}</div>`)
         messagesHolder.append(newMessage);
     }
+}
+
+function getToken(){
+    return localStorage.getItem('auth_token');
 }

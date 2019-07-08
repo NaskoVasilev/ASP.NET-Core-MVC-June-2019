@@ -11,7 +11,7 @@ function login() {
     };
 
     $.post({
-        url: apiUrl + 'user/login',
+        url: apiUrl + '/account/login',
         data: JSON.stringify(requestBody),
         headers:{
             "Content-Type": "application/json"
@@ -22,6 +22,7 @@ function login() {
             hideLoginAndRegisterAndShowLoggedInData();
             saveToken(data);
             user = getUser();
+            $('#username-logged-in').text(user);
         },
         error: function (error) {
             console.error(error);
@@ -42,7 +43,7 @@ function register() {
     };
 
     $.post({
-        url: apiUrl + 'user/register',
+        url: apiUrl + '/account/register',
         data: JSON.stringify(requestBody),
         headers:{
             "Content-Type": "application/json"
@@ -90,7 +91,7 @@ function saveToken(token) {
 }
 
 function evictToken() {
-    localStorage.removeItem('auth_token', token);
+    localStorage.removeItem('auth_token');
 }
 
 function getUser() {
@@ -99,7 +100,6 @@ function getUser() {
     let claims = token.split('.')[1];
     let decodedClaims = atob(claims);
     let parsedClaims = JSON.parse(decodedClaims);
-
     return parsedClaims['unique_name'];
 }
 

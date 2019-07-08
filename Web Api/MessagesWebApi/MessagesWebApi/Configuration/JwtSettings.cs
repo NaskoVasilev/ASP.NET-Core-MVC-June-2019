@@ -1,4 +1,4 @@
-﻿namespace JwtAuthentication.Configuration
+﻿namespace MessagesWebApi.Configuration
 {
 	public class JwtSettings
 	{

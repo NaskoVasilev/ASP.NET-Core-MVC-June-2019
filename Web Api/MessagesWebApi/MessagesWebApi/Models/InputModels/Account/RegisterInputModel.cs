@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace JwtAuthentication.InputModels.Account
+namespace MessagesWebApi.Models.InputModels.Account
 {
 	public class RegisterInputModel
 	{

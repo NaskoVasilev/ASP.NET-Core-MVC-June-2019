@@ -1,4 +1,4 @@
-﻿namespace JwtAuthentication.InputModels.Account
+﻿namespace MessagesWebApi.Models.InputModels.Account
 {
 	public class LoginInputModel
 	{

@@ -1,7 +1,9 @@
 ﻿using MessagesWebApi.Data;
+using MessagesWebApi.Data.Models;
 using MessagesWebApi.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -23,6 +25,17 @@ namespace MessagesWebApi
 		{
 			services.AddDbContext<ApplicationDbContext>(options =>
 				options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+			services.AddIdentity<ApplicationUser, IdentityRole>(options =>
+			{
+				options.Password.RequireDigit = false;
+				options.Password.RequiredLength = 5;
+				options.Password.RequiredUniqueChars = 0;
+				options.Password.RequireLowercase = false;
+				options.Password.RequireNonAlphanumeric = false;
+				options.Password.RequireUppercase = false;
+			})
+			.AddEntityFrameworkStores<ApplicationDbContext>()
+			.AddDefaultTokenProviders();
 
 			services.AddScoped<IMessageService, MessageService>();
 
@@ -34,7 +47,7 @@ namespace MessagesWebApi
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
 		public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 		{
-			using(IServiceScope scope =app.ApplicationServices.CreateScope())
+			using (IServiceScope scope = app.ApplicationServices.CreateScope())
 			{
 				ApplicationDbContext context = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
 				context.Database.EnsureCreated();

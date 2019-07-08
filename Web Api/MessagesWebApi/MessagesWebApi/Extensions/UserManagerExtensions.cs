@@ -27,12 +27,13 @@ namespace MessagesWebApi.Extensions
 			}
 
 			var tokenHandler = new JwtSecurityTokenHandler();
-			var key = Encoding.ASCII.GetBytes(settings.Secret);
+			var key = Encoding.UTF8.GetBytes(settings.Secret);
 			var tokenDiscriptor = new SecurityTokenDescriptor
 			{
 				Subject = new ClaimsIdentity(new Claim[]
 				{
-					new Claim(ClaimTypes.Name, user.UserName)
+					new Claim(ClaimTypes.Name, user.UserName),
+					new Claim(ClaimTypes.NameIdentifier, user.Id)
 				}),
 				Expires = DateTime.UtcNow.AddDays(7),
 				SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)

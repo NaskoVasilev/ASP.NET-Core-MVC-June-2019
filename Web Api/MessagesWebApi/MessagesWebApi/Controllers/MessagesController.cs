@@ -1,6 +1,7 @@
 ﻿using MessagesWebApi.Models.InputModels.Message;
 using MessagesWebApi.Models.ViewModels.Message;
 using MessagesWebApi.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -22,6 +23,7 @@ namespace MessagesWebApi.Controllers
 			return messageService.All();
 		}
 
+		[Authorize]
 		[Route("create")]
 		public async Task<ActionResult> Create(MessageCreateInputModel model)
 		{

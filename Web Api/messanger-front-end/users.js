@@ -100,7 +100,7 @@ function getUser() {
     let decodedClaims = atob(claims);
     let parsedClaims = JSON.parse(decodedClaims);
 
-    return parsedClaims.name;
+    return parsedClaims['unique_name'];
 }
 
 function isLoggedIn() {

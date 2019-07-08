@@ -45,7 +45,7 @@ namespace MessagesWebApi
 			services.Configure<JwtSettings>(jwtSettingsSection);
 
 			var jwtSettings = jwtSettingsSection.Get<JwtSettings>();
-			var key = Encoding.ASCII.GetBytes(jwtSettings.Secret);
+			var key = Encoding.UTF8.GetBytes(jwtSettings.Secret);
 
 
 			services.AddAuthentication(options =>
@@ -91,13 +91,13 @@ namespace MessagesWebApi
 				app.UseHsts();
 			}
 
+			app.UseAuthentication();
 			app.UseHttpsRedirection();
 			app.UseCors(builder =>
 			{
 				builder.WithOrigins("http://localhost:8001");
 				builder.AllowAnyHeader();
 			});
-			app.UseAuthentication();
 			app.UseMvc();
 		}
 	}

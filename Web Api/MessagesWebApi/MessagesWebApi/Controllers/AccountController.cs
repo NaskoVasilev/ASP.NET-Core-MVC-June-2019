@@ -6,7 +6,6 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using System.Linq;
-using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace MessagesWebApi.Controllers
@@ -47,12 +46,6 @@ namespace MessagesWebApi.Controllers
 			}
 
 			return Ok(jwtToken);
-		}
-
-		[HttpGet("me")]
-		public ActionResult<string> GetMe()
-		{
-			return this.User.FindFirst(ClaimTypes.Name).Value;
 		}
 	}
 }

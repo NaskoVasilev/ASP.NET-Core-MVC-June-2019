@@ -1,6 +1,8 @@
-﻿using MessagesWebApi.Data;
+﻿using MessagesWebApi.Configuration;
+using MessagesWebApi.Data;
 using MessagesWebApi.Data.Models;
 using MessagesWebApi.Services;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
@@ -8,6 +10,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 namespace MessagesWebApi
 {
@@ -36,6 +40,31 @@ namespace MessagesWebApi
 			})
 			.AddEntityFrameworkStores<ApplicationDbContext>()
 			.AddDefaultTokenProviders();
+
+			var jwtSettingsSection = Configuration.GetSection("JwtSettings");
+			services.Configure<JwtSettings>(jwtSettingsSection);
+
+			var jwtSettings = jwtSettingsSection.Get<JwtSettings>();
+			var key = Encoding.ASCII.GetBytes(jwtSettings.Secret);
+
+
+			services.AddAuthentication(options =>
+			{
+				options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+				options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+			})
+			.AddJwtBearer(options =>
+			{
+				options.RequireHttpsMetadata = false;
+				options.SaveToken = true;
+				options.TokenValidationParameters = new TokenValidationParameters
+				{
+					ValidateIssuerSigningKey = true,
+					IssuerSigningKey = new SymmetricSecurityKey(key),
+					ValidateIssuer = false,
+					ValidateAudience = false
+				};
+			});
 
 			services.AddScoped<IMessageService, MessageService>();
 
@@ -68,6 +97,7 @@ namespace MessagesWebApi
 				builder.WithOrigins("http://localhost:8001");
 				builder.AllowAnyHeader();
 			});
+			app.UseAuthentication();
 			app.UseMvc();
 		}
 	}

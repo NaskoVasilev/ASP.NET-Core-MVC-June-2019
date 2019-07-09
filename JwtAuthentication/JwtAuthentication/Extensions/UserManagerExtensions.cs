@@ -32,7 +32,8 @@ namespace JwtAuthentication.Extensions
 			{
 				Subject = new ClaimsIdentity(new Claim[]
 				{
-					new Claim(ClaimTypes.Name, user.Id),
+					new Claim(ClaimTypes.Name, user.UserName),
+					new Claim(ClaimTypes.NameIdentifier, user.Id),
 					new Claim(ClaimTypes.Email, user.Email),
 				}),
 				Expires = DateTime.UtcNow.AddDays(7),

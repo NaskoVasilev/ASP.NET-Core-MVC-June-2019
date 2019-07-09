@@ -2,6 +2,7 @@
 using JwtAuthentication.Extensions;
 using JwtAuthentication.InputModels.Account;
 using JwtAuthentication.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
@@ -48,6 +49,13 @@ namespace JwtAuthentication.Controllers
 			}
 
 			return Ok(jwtToken);	
+		}
+
+		[Authorize]
+		[HttpGet("username")]
+		public ActionResult<string> GetUsername()
+		{
+			return this.User.Identity.Name;
 		}
 	}
 }

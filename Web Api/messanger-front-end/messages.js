@@ -1,3 +1,5 @@
+loadMessages();
+
 function loadMessages() {
     $.get(apiUrl + '/messages/all')
         .done(data => {
@@ -9,8 +11,8 @@ function loadMessages() {
 }
 
 function createMessage() {
-    if (!user) {
-        alert('You have to choose username before send message.')
+    if (!isLoggedIn()) {
+        alert('You have to login before send message.')
         return;
     }
 
@@ -26,10 +28,11 @@ function createMessage() {
             'Content-Type': 'application/json',
             'Authorization': 'Bearer ' + getToken()  
         },
-        data: JSON.stringify({ content: content, user: user })
+        data: JSON.stringify({ content: content })
     })
-        .done(() => {
-            loadMessages();
+        .done((data) => {
+            let messagesHolder = $('#messages');
+            appendMessage(messagesHolder, data);
         })
         .fail(error => {
             console.log(error);
@@ -40,9 +43,13 @@ function renderMessages(data) {
     let messagesHolder = $('#messages');
     messagesHolder.empty();
     for (let message of data) {
-        let newMessage = $(`<div class="message d-flex justify-content-start"><strong>${message.user}</strong>: ${message.content}</div>`)
-        messagesHolder.append(newMessage);
+       appendMessage(messagesHolder, message);
     }
+}
+
+function appendMessage(messagesHolder, message){
+    let newMessage = $(`<div class="message d-flex justify-content-start"><strong>${message.user}</strong>: ${message.content}</div>`)
+    messagesHolder.append(newMessage);
 }
 
 function getToken(){

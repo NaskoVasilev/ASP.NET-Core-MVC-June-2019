@@ -21,12 +21,12 @@ namespace MessagesWebApi.Services
 		{
 			return context.Messages
 				.OrderBy(m => m.CreatedOn)
-				.Select(m => new MessageViewModel() { Content = m.Content, User = m.User.UserName }).ToList();
+				.Select(m => new MessageViewModel() { Content = m.Content, User = m.User.UserName })
+				.ToList();
 		}
 
-		public async Task<Message> Create(MessageCreateInputModel model)
+		public async Task<Message> Create(MessageCreateInputModel model, ApplicationUser user)
 		{
-			var user = context.Users.FirstOrDefault(u => u.UserName == model.User);
 			Message message = new Message { User = user, Content = model.Content };
 			await context.Messages.AddAsync(message);
 			await context.SaveChangesAsync();

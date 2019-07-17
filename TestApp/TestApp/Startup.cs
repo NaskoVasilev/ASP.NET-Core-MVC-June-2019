@@ -69,6 +69,14 @@ namespace TestApp
 					policy.RequireAuthenticatedUser();
 				});
 			});
+
+            services.AddDistributedMemoryCache();
+            services.AddSession(options =>
+            {
+                options.IdleTimeout = TimeSpan.FromSeconds(50);
+                options.Cookie.HttpOnly = true;
+            });
+
 			services.AddMvc(options => 
 			{
 				//options.ModelBinderProviders.Insert(0, new DateToYearBindingProvider());
@@ -96,7 +104,7 @@ namespace TestApp
 			app.UseStaticFiles();
 
 			app.UseCookiePolicy();
-
+            app.UseSession();
 			app.UseAuthentication();
 			app.UseMvc(routes =>
 			{

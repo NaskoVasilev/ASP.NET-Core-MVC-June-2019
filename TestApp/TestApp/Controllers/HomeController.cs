@@ -9,7 +9,10 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
+using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging.Console;
 using TestApp.Models;
 
 namespace TestApp.Controllers
@@ -18,13 +21,19 @@ namespace TestApp.Controllers
 	{
 		private readonly IConfiguration configuration;
 		private readonly UserManager<IdentityUser> userManager;
+        private readonly ILogger<HomeController> logger;
+        private readonly IMemoryCache memoryCache;
 
-		public HomeController(IConfiguration configuration, UserManager<IdentityUser> userManager)
+        public HomeController(IConfiguration configuration, UserManager<IdentityUser> userManager, 
+            ILogger<HomeController> logger, IMemoryCache memoryCache)
 		{
 			this.configuration = configuration;
 			this.userManager = userManager;
-		}
+            this.logger = logger;
+            this.memoryCache = memoryCache;
+        }
 
+        
 		public IActionResult Index(string name)
 		{
 			return View();

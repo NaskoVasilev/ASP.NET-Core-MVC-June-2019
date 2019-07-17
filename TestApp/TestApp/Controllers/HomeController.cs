@@ -36,10 +36,24 @@ namespace TestApp.Controllers
         
 		public IActionResult Index(string name)
 		{
-			return View();
+            this.TempData["name"] = "Nasko";
+            return Content("Index");
 		}
 
-		[Authorize]
+        public IActionResult Index1(string name)
+        {
+            TempData.Keep("name");
+            var data = TempData["name"];
+            return Content("Index1 " + data?.ToString()); 
+        }
+
+        public IActionResult Index2(string name)
+        {
+            var data = this.TempData["name"];
+            return Content("Index2 " + data?.ToString());
+        }
+
+        [Authorize]
 		public async Task<IActionResult> AddCountryClaim(string country)
 		{
 			Claim claim = new Claim(ClaimTypes.Country, country);

@@ -77,11 +77,13 @@ namespace TestApp
                 options.Cookie.HttpOnly = true;
             });
 
-			services.AddMvc(options => 
-			{
-				//options.ModelBinderProviders.Insert(0, new DateToYearBindingProvider());
-				options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute());
-			})
+            services.AddSession();
+
+            services.AddMvc(options =>
+            {
+                //options.ModelBinderProviders.Insert(0, new DateToYearBindingProvider());
+                options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute());
+            }).AddSessionStateTempDataProvider()
 			.SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 		}
 
@@ -102,7 +104,7 @@ namespace TestApp
 
 			app.UseHttpsRedirection();
 			app.UseStaticFiles();
-
+            app.UseSession();
 			app.UseCookiePolicy();
             app.UseSession();
 			app.UseAuthentication();

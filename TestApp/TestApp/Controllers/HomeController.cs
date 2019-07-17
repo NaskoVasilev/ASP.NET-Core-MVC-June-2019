@@ -36,8 +36,7 @@ namespace TestApp.Controllers
         
 		public IActionResult Index(string name)
 		{
-            this.TempData["name"] = "Nasko";
-            return Content("Index");
+            return View();
 		}
 
         public IActionResult Index1(string name)

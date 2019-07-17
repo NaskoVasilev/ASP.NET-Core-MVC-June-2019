@@ -70,20 +70,16 @@ namespace TestApp
 				});
 			});
 
-            services.AddDistributedMemoryCache();
-            services.AddSession(options =>
+            services.AddResponseCompression(options => 
             {
-                options.IdleTimeout = TimeSpan.FromSeconds(50);
-                options.Cookie.HttpOnly = true;
+                options.EnableForHttps = true;
             });
-
-            services.AddSession();
 
             services.AddMvc(options =>
             {
                 //options.ModelBinderProviders.Insert(0, new DateToYearBindingProvider());
                 options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute());
-            }).AddSessionStateTempDataProvider()
+            })
 			.SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 		}
 
@@ -103,10 +99,9 @@ namespace TestApp
 			}
 
 			app.UseHttpsRedirection();
+            app.UseResponseCompression();
 			app.UseStaticFiles();
-            app.UseSession();
 			app.UseCookiePolicy();
-            app.UseSession();
 			app.UseAuthentication();
 			app.UseMvc(routes =>
 			{

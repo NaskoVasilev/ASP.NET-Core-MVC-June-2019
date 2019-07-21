@@ -1,6 +1,6 @@
 ﻿namespace SofiaPropertiesPricePrediction.Models
 {
-    public class PropertyInputModel
+    public class PropertyViewModel
     {
         public float Size { get; set; }
 
@@ -15,5 +15,7 @@
         public string Type { get; set; }
 
         public string BuildingType { get; set; }
+
+        public float Price { get; set; }
     }
 }

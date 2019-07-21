@@ -23,6 +23,8 @@ namespace MachineLearningML.ConsoleApp
 
         static void Main(string[] args)
         {
+            ModelBuilder.CreateModel();
+
             MLContext mlContext = new MLContext();
 
             // Training code used by ML.NET CLI and AutoML to generate the model

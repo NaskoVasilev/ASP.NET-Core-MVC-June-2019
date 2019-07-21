@@ -40,7 +40,5 @@ namespace MachineLearningML.Model.DataModels
 
         [ColumnName("Price"), LoadColumn(7)]
         public float Price { get; set; }
-
-
     }
 }

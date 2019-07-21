@@ -1,8 +1,57 @@
-﻿@{
+﻿@model PropertyInputModel
+@{
     ViewData["Title"] = "Home Page";
 }
 
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+
+<h4>Get Prediction</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Predict" asp-controller="Home">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Size" class="control-label"></label>
+                <input asp-for="Size" class="form-control" />
+                <span asp-validation-for="Size" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Floor" class="control-label"></label>
+                <input asp-for="Floor" class="form-control" />
+                <span asp-validation-for="Floor" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TotalFloors" class="control-label"></label>
+                <input asp-for="TotalFloors" class="form-control" />
+                <span asp-validation-for="TotalFloors" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="District" class="control-label"></label>
+                <input asp-for="District" class="form-control" />
+                <span asp-validation-for="District" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Year" class="control-label"></label>
+                <input asp-for="Year" class="form-control" />
+                <span asp-validation-for="Year" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Type" class="control-label"></label>
+                <input asp-for="Type" class="form-control" />
+                <span asp-validation-for="Type" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BuildingType" class="control-label"></label>
+                <input asp-for="BuildingType" class="form-control" />
+                <span asp-validation-for="BuildingType" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Predict" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
 </div>

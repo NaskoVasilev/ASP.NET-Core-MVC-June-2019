@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SofiaPropertiesPricePredict
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SofiaPropertiesPricePredictionModelTrainer", "SofiaPropertiesPricePredictionModelTrainer\SofiaPropertiesPricePredictionModelTrainer.csproj", "{5E6F44A8-AD67-4E01-8D93-5CA5EEDC8BF9}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarPricePrediction", "CarPricePrediction\CarPricePrediction.csproj", "{0A6CBDA9-0DAE-4691-B695-3C283A53864A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{5E6F44A8-AD67-4E01-8D93-5CA5EEDC8BF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5E6F44A8-AD67-4E01-8D93-5CA5EEDC8BF9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5E6F44A8-AD67-4E01-8D93-5CA5EEDC8BF9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0A6CBDA9-0DAE-4691-B695-3C283A53864A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A6CBDA9-0DAE-4691-B695-3C283A53864A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A6CBDA9-0DAE-4691-B695-3C283A53864A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A6CBDA9-0DAE-4691-B695-3C283A53864A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

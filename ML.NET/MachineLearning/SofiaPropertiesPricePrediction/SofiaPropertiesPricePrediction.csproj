@@ -10,12 +10,8 @@
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
     <PackageReference Include="Microsoft.Extensions.ML" Version="0.14.0" />
+    <PackageReference Include="Microsoft.ML.FastTree" Version="1.2.0" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.3" />
-  </ItemGroup>
-
-
-  <ItemGroup>
-    <ProjectReference Include="..\MachineLearningML.Model\MachineLearningML.Model.csproj" />
   </ItemGroup>
 
 

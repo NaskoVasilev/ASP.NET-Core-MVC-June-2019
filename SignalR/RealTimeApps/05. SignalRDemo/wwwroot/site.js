@@ -1,6 +1,6 @@
 ﻿// WebSocket = undefined;
-// EventSource = undefined;
-//, signalR.HttpTransportType.LongPolling
+//EventSource = undefined;
+//signalR.HttpTransportType.LongPolling;
 
 let connection = null;
 

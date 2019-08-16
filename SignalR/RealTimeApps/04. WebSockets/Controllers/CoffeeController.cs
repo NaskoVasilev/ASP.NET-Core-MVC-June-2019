@@ -1,6 +1,7 @@
 ﻿namespace WebSocketsDemo.Controllers
 {
     using System;
+    using System.Diagnostics;
     using System.Net.WebSockets;
     using System.Text;
     using System.Threading;
@@ -68,6 +69,12 @@
                     messageType: WebSocketMessageType.Text,
                     endOfMessage: true,
                     cancellationToken: CancellationToken.None);
+
+                var buffer = new byte[1024];
+                WebSocketReceiveResult received =
+                    await webSocket.ReceiveAsync(new ArraySegment<byte>(buffer), CancellationToken.None);
+                string text = Encoding.UTF8.GetString(buffer, 0, received.Count);
+                Debug.WriteLine(text);
             }
             while (!result.Finished);
         }

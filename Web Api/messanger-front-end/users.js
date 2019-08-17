@@ -23,6 +23,8 @@ function login() {
             saveToken(data);
             user = getUser();
             $('#username-logged-in').text(user);
+            setUpSignalRConnection();
+            loadMessages();
         },
         error: function (error) {
             console.error(error);
@@ -81,7 +83,7 @@ function showLoginAndHideLoggedInData() {
 }
 
 function logout() {
-    $('#caption').text('Choose your username to begin chatting!');
+    $('#caption').text('Login to begin chatting!');
     evictToken();
     showLoginAndHideLoggedInData();
 }

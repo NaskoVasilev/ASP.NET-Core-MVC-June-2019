@@ -10,6 +10,6 @@ namespace MessagesWebApi.Services
 	{
 		List<MessageViewModel> All();
 
-		Task<Message> Create(MessageCreateInputModel model, ApplicationUser user);
+		Task<Message> Create(MessageCreateInputModel model, string userId);
 	}
 }

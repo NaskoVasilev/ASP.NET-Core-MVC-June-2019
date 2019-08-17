@@ -25,9 +25,9 @@ namespace MessagesWebApi.Services
 				.ToList();
 		}
 
-		public async Task<Message> Create(MessageCreateInputModel model, ApplicationUser user)
+		public async Task<Message> Create(MessageCreateInputModel model, string userId)
 		{
-			Message message = new Message { User = user, Content = model.Content };
+			Message message = new Message { UserId = userId, Content = model.Content };
 			await context.Messages.AddAsync(message);
 			await context.SaveChangesAsync();
 			return message;

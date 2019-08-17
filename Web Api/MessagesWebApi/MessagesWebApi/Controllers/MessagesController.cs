@@ -31,8 +31,8 @@ namespace MessagesWebApi.Controllers
 		[Route("create")]
 		public async Task<ActionResult> Create(MessageCreateInputModel model)
 		{
-			ApplicationUser user = await userManager.GetUserAsync(this.User);
-			Message message = await messageService.Create(model, user);
+			string userId = userManager.GetUserId(this.User);
+			Message message = await messageService.Create(model, userId);
 			MessageViewModel viewModel = new MessageViewModel { Content = message.Content, User = message.User.UserName };
 			return Ok(viewModel);
 		}

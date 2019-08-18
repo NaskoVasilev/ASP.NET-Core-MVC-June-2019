@@ -1,8 +1,9 @@
 {
   "version": "1.0",
-  "defaultProvider": "cdnjs",
+  "defaultProvider": "unpkg",
   "libraries": [
     {
+      "provider": "cdnjs",
       "library": "aspnet-signalr@1.1.4",
       "destination": "wwwroot/lib/signalR/",
       "files": [

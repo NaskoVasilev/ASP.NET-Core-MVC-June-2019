@@ -1,0 +1,41 @@
+﻿@model Chat.Models.User.ChatViewModel
+
+@{
+    ViewData["Title"] = "Firends";
+}
+
+<h1>You are chatting with @Model.Recipient</h1>
+<div class="row">
+    <div class="col-md-5">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Username</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var user in Model.Friends)
+                {
+                    <tr>
+                        <td>
+                            <a asp-action="Chat" asp-controller="User" asp-route-recipientId="@user.Id">@user.Username</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <div class="col-md-7">
+        <div class="overflow-hidden" id="message-list">
+            @foreach (var message in Model.Messages)
+            {
+                <p>@message.Content</p>
+            }
+        </div>
+        <div class="d-flex justify-content-lg-start">
+            <h4>Message: </h4>
+            <input type="text" name="content" value="content" id="content" />
+            <button class="btn btn-dark">Send</button>
+        </div>
+    </div>
+</div>

@@ -20,6 +20,11 @@ namespace Chat.Hubs
 
         public async Task SendMessage(string message, string recipientId)
         {
+            if (string.IsNullOrEmpty(message))
+            {
+                return;
+            }
+
             string sanitizedMessage = htmlSanitizer.Sanitize(message);
             string userId = Context.UserIdentifier;
 

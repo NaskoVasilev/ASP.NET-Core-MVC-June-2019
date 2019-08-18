@@ -33,7 +33,7 @@ namespace Chat.Services
             return context.Messages
                 .Where(x => (x.SenderId == userId && x.RecipientId == recipientId) || (x.SenderId == recipientId && x.RecipientId == userId))
                 .OrderBy(x => x.SendOn)
-                .Select(x => new MessageViewModel { Content = x.Content,SenderId = x.SenderId })
+                .Select(x => new MessageViewModel { Content = x.Content, SenderId = x.SenderId })
                 .ToList();
         }
     }

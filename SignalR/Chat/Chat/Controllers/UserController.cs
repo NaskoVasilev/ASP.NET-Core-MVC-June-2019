@@ -38,7 +38,7 @@ namespace Chat.Controllers
             {
                 Messages = messageService.UserMessagesByRecipientId(userId, recipientId),
                 Recipient = recipient,
-                RecipientId = recipient,
+                RecipientId = recipientId,
                 Sender = username,
                 SenderId = userId,
                 Friends = friends

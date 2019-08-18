@@ -1,12 +1,12 @@
 ﻿@model Chat.Models.User.ChatViewModel
 
 @{
-    ViewData["Title"] = "Firends";
+    ViewData["Title"] = "Chat";
 }
 
 @if (Model.Recipient != null)
 {
-    <h1>You are chatting with @Model.Recipient</h1>
+    <h3 class="mb-4">You are chatting with @Model.Recipient</h3>
 }
 <div class="row">
     <div class="col-md-5">
@@ -23,11 +23,17 @@
                         <td>
                             @if (user.Username == Model.Recipient)
                             {
-                                <a class="active-user" asp-action="Chat" asp-controller="User" asp-route-recipientId="@user.Id" data-userId="@user.Id">@user.Username</a>
+                                <a class="active-user btn btn-warning" asp-action="Chat" asp-controller="User" asp-route-recipientId="@user.Id" data-userId="@user.Id" id="@user.Id">
+                                    @user.Username
+                                    <span class="badge badge-light">0</span>
+                                </a>
                             }
                             else
                             {
-                                <a asp-action="Chat" asp-controller="User" asp-route-recipientId="@user.Id" data-userId="@user.Id"  >@user.Username</a>
+                                <a class="btn btn-dark" asp-action="Chat" asp-controller="User" asp-route-recipientId="@user.Id" data-userId="@user.Id" id="@user.Id">
+                                    @user.Username
+                                    <span class="badge badge-light">0</span>
+                                </a>
                             }
                         </td>
                     </tr>
@@ -36,13 +42,24 @@
         </table>
     </div>
     <div class="col-md-7">
-        <div class="height-450 overflow-hidden" id="message-list">
+        <div class="height-450 overflow-auto" id="message-list">
             @foreach (var message in Model.Messages)
             {
-                <p>@message.Content</p>
+                if (message.SenderId == Model.SenderId)
+                {
+                    <div class="ml-4">
+                        <p class="btn btn-primary d-inline-block">@message.Content</p>
+                    </div>
+                }
+                else
+                {
+                    <div class="d-flex justify-content-end mr-4 ">
+                        <p class="btn btn-dark text-right d-inline-block">@message.Content</p>
+                    </div>
+                }
             }
         </div>
-        <div class="d-flex justify-content-lg-start">
+        <div class="d-flex justify-content-lg-start mt-4">
             <h4 class="mr-3">Message: </h4>
             <input type="text" name="content" id="content" />
             <button class="btn btn-dark ml-3" id="send-btn">Send</button>

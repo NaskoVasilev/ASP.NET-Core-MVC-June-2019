@@ -31,9 +31,9 @@ namespace Chat.Services
         public IEnumerable<MessageViewModel> UserMessagesByRecipientId(string userId, string recipientId)
         {
             return context.Messages
-                .Where(x => x.SenderId == userId && x.RecipientId == recipientId)
+                .Where(x => (x.SenderId == userId && x.RecipientId == recipientId) || (x.SenderId == recipientId && x.RecipientId == userId))
                 .OrderBy(x => x.SendOn)
-                .Select(x => new MessageViewModel { Content = x.Content })
+                .Select(x => new MessageViewModel { Content = x.Content,SenderId = x.SenderId })
                 .ToList();
         }
     }

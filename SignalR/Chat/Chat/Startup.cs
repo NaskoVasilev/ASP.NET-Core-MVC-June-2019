@@ -9,6 +9,8 @@ using Chat.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Chat.Services;
+using Chat.Hubs;
+using Ganss.XSS;
 
 namespace Chat
 {
@@ -39,7 +41,9 @@ namespace Chat
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
             services.AddScoped<IMessageService, MessageService>();
+            services.AddSingleton<IHtmlSanitizer, HtmlSanitizer>(x => new HtmlSanitizer());
 
+            services.AddSignalR();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
@@ -63,7 +67,7 @@ namespace Chat
             app.UseCookiePolicy();
 
             app.UseAuthentication();
-
+            app.UseSignalR(routes => routes.MapHub<ChatHub>("/chat"));
             app.UseMvc(routes =>
             {
                 routes.MapRoute(

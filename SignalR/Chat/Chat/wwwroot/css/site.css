@@ -58,3 +58,7 @@ body {
 .height-450 {
     height: 450px;
 }
+
+.active-user{
+    color: black;
+}

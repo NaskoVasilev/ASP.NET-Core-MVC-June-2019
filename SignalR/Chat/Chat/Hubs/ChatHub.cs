@@ -1,4 +1,5 @@
 ﻿using Chat.Services;
+using Ganss.XSS;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.SignalR;
 using System.Threading.Tasks;
@@ -9,20 +10,23 @@ namespace Chat.Hubs
     public class ChatHub : Hub
     {
         private readonly IMessageService messageService;
+        private readonly IHtmlSanitizer htmlSanitizer;
 
-        public ChatHub(IMessageService messageService)
+        public ChatHub(IMessageService messageService, IHtmlSanitizer htmlSanitizer)
         {
             this.messageService = messageService;
+            this.htmlSanitizer = htmlSanitizer;
         }
 
         public async Task SendMessage(string message, string recipientId)
         {
+            string sanitizedMessage = htmlSanitizer.Sanitize(message);
             string userId = Context.UserIdentifier;
-            string username = Context.User.Identity.Name;
 
-            await messageService.Create(message, userId, recipientId);
+            await messageService.Create(sanitizedMessage, userId, recipientId);
 
-            await Clients.User(recipientId).SendAsync("ReceiveMessage", message, userId);
+            await Clients.User(recipientId).SendAsync("ReceiveMessage", sanitizedMessage, userId);
+            await Clients.Caller.SendAsync("SendedMessage", sanitizedMessage);
         }
     }
 }

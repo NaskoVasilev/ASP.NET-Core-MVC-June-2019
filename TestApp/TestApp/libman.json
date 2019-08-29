@@ -1,0 +1,12 @@
+{
+  "version": "1.0",
+  "defaultProvider": "cdnjs",
+  "libraries": [
+    {
+      "library": "jquery@3.4.1",
+      "files": [
+        "jquery.js"
+      ]
+    }
+  ]
+}
